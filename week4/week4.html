@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PHYSCI-70</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+   .col-sm-3 img{
+    width: 200px;
+    height: 300px;
+   }
+   .writting p{
+    line-height: 50px;
+      padding: 50px;
+      font-size: 20px;
+      color: lightslategray;
+   }
+   .visual video{
+      width: 300px;
+      padding-left: 50px;
+      float:left;
+   }
+   .visual img{
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 500px;
+    float: inline-end;
+
+   }
+   .writting h2{
+    text-align: center;
+   }
+  </style>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/arduino-light.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/arduino.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Portfolio</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="https://vargasl24.github.io/PHYSCI-70/index.html">Home</a></li>
+        <li><a href="About/about.html">About</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Week 4: Microcontroller Programing </h1>      
+  </div>
+</div>
+
+<div class="row">
+  <div class="visual">
+    <div>
+      <img src="Screen Shot 2022-06-30 at 1.15.43 AM.png" alt="fusion 360">
+     </div>
+  </div>
+  <div class="writting">
+    <p>For this week my first idea was to build onto my week 3 project, and make a record player that would be able to slow down and spin for a given time to simmulate a song. However due to all of the internals being unaccessable and the motor that was mounted breaking this was no longer and option for me. What I came up with was a mini trashcan that could be opened and closed with the push of a button.</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="visual">
+    <div>
+      <img src="IMG_AD5FC5637ACB-1.jpeg" alt="top lazer cut">
+     </div>
+  </div>
+  <div class="writting">
+    <p>For my design I wanted it to be as compact as possible but to also make sure that the trash doesnt touch any of the electromics in the can itself. I also knew that I would want this to be opened easily to acccess the electronics incase something malfunctions. In my design I ended up going for a revolving lid idea that would have a gap to avoid frition slowing down or stoping the lid.</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="visual">
+    <div>
+      <img src="IMG_B840D37830E0-1.jpeg" alt="trash can">
+     </div>
+  </div>
+  <div class="writting">
+    <p> First I laser cut the parts of the trash can itself, I designed everything in fusion 360 because it is quick and easy, and would give me the prrecise angles I needed to make the box. The container that would hold all the trash was a plastic cup so that trash that was being tossed wouldnt damage anything inside. </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="visual">
+    <div>
+      <img src="IMG_9806AB5FB797-1.jpeg" alt="internals">
+     </div>
+  </div>
+  <div class="writting">
+    <p>For the internals what I did was mount the motor to the side of the box using hot glue and used a stick to connect the motor to the lid. using the arduino and a breadboard I connected the motor to port 3 and 4 and connected the other two wires to the ground and 5V ports.There was a button that when pressed gave the lid a half turn allowing the user to throw away trash. This is the code used to tell the arduino what to do.</p>
+  </div>
+  <pre><code class="language-arduino">
+const int A1A = 3;  // define pin 3 for A-1A 
+const int A1B = 4;  // define pin 4 for A-1B 
+
+void setup() {
+  pinMode(A1A, OUTPUT);     // specify these pins as outputs
+  pinMode(A1B, OUTPUT);
+  digitalWrite(A1A, LOW);   // start with the motors off 
+  digitalWrite(A1B, LOW);
+}
+
+void loop() {
+  // start the motor 
+  digitalWrite(A1A, HIGH);   
+  digitalWrite(A1B, LOW);
+  delay(75);              // allow the motor to run for 4 seconds
+
+  // stop the motor
+  digitalWrite(A1A, LOW);   // setting both pins LOW stops the motor 
+  digitalWrite(A1B, LOW);   // redundant, but doesn't hurt 
+  delay(2500);              // keep the motor off for 2 seconds
+}
+    </code></pre> 
+</div>
+
+
+<div class="row">
+<div class="visual">
+  <div>
+    <div class="visual">
+      <img src="IMG_7D395ACEEC3A-1.jpeg" alt="final product">
+    </div>
+    <video width="600px" autoplay muted>
+      <source src="trash.mp4" type="video/mp4">
+    </video>
+  </div>
+  </div>
+</div>
+
+</h2>
+<div class="writting">
+  <h2>What I learned</h2>
+  <p> I learned the different ways to connect ardino to the motors and now to use buttons to communicate to the motor. It was fun using what I learned from the previous project to improve apon this weeks assignment.</p>
+</div>
+</div>
+
+</body>
