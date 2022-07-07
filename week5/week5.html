@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PHYSCI-70</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+   .col-sm-3 img{
+    width: 200px;
+    height: 300px;
+   }
+   .writting p{
+    line-height: 50px;
+      padding: 50px;
+      font-size: 20px;
+      color: lightslategray;
+   }
+   .visual video{
+      width: 300px;
+      padding-left: 50px;
+      float:left;
+   }
+   .visual img{
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 500px;
+    float: inline-end;
+
+   }
+   .writting h2{
+    text-align: center;
+   }
+  </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>                        
+            </button>
+            <a class="navbar-brand" href="#">Portfolio</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="https://vargasl24.github.io/PHYSCI-70/index.html">Home</a></li>
+              <li><a href="About/about.html">About</a></li>
+              <li><a href="Final_Project/Final_project.html">Final Project</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Week 5: 3D Design & Printing</h1>      
+  </div>
+</div>
+
+<div class="row">
+    <div class="visual">
+      <div>
+        <img src="Screen Shot 2022-07-06 at 5.23.19 PM.png" alt="Fusion 360 ">
+       </div>
+    </div>
+    <div class="writting">
+      <p>The assignment was to 3d print something that could not be made using subtractive meathods. So the first thing that came to mind was two linked objects. This would be hard to create with subtrative meathods due to one object being incapsulated in another. I made the design in fusion 360, I created two bodies and used the drag feature to bring one into the other.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="visual">
+      <div>
+        <img src="Screen Shot 2022-07-06 at 5.25.26 PM.png" alt="Prusa software ">
+       </div>
+    </div>
+    <div class="writting">
+      <p>After I finished making the shape in fusion 360, I saved the file as <a download href='Print v1.stl'> Printv1.STI </a> and imported it into prusa software to size it down and finally start the 3D printing. I printed it with .30mm thickness to minimize the time. I also used a lot of supports to make sure the floating piece of the link doesnt fail durring the print.<a download href='Print v1_0.3mm_PLA_MK3S_4h45m.gcode'>Download my sliced G-code  </a></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="visual">
+      <div>
+        <video width="600px" autoplay muted>
+            <source src="IMG_9427.mp4" type="video/mp4">
+          </video>
+       </div>
+    </div>
+    <div class="writting">
+      <p>This is a timelaps of the print. It took 11 minutes in total for this small print, this opened my eyes to how long it was going to take to print out the different parts for my final project. The most fun part was grabbing the pliers and pulling away all of the access materiaal that was used as supports. After it finished printing i was curious on how much force the little chain could resist. I tried pulling apart with my hands and even tried putting two hammers on it, nothing budged. After passing it around my dorm no one was able to pull apart the two rings. After looking closely at the rings I noticed something, one of the rings was going with the grain of the print while the other was going against. This lead to me thinking about how the direction of the grain might affect my build for the final project.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="visual">
+      <div>
+        <video width="600px" autoplay muted>
+            <source src="RPReplay_Final1657166158.MP4" type="video/mp4">
+          </video>
+       </div>
+    </div>
+    <div class="writting">
+      <p> The second part of this weeks assignment was to use a photogrammetry app to scan something. This was by far my favorite app to play around with and push the boundries on what was possible. I had fun scanning things like shoes and bottles but the best thing to scan was my friends around me. The slight errors that occured when I moved changed the final 3D scan and make it extremely funny to look at. I used an app called ScandyPro, it was free to scan but required a subscription to download the 3d render so I opted to screen recording the render instead. </p>
+    </div>
+  </div>
+ 
+  <div class="writting">
+    <h2>What I would change</h2>
+    <p>I would change the amount of supports that i used durring the print. I think that having all areas covored was not needed and watsted some of the filament. For the 3D rendering I would mount the camera on a tripod and use some type of spinning device to move the object in a circle without it bobbing up and down. </p>
+  </div>
+</div>
+
+</body>
+
+</body>
