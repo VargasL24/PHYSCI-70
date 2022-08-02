@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PHYSCI-70</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+   .col-sm-3 img{
+    width: 200px;
+    height: 300px;
+   }
+   .writting p{
+    line-height: 50px;
+      padding: 50px;
+      font-size: 20px;
+      color: lightslategray;
+   }
+   .visual video{
+      width: 300px;
+      padding-left: 50px;
+      float:left;
+   }
+   .visual img{
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 500px;
+    float: inline-end;
+
+   }
+ h2{
+    text-align: center;
+   }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">Portfolio</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="https://vargasl24.github.io/PHYSCI-70/index.html">Home</a></li>
+          <li><a href="About/about.html">About</a></li>
+          <li><a href="Final Project/Final.html">Final Project</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+
+<div class="jumbotron">
+  <div class="container twext-center">
+    <h1>Final Project: Stabilized Rocket </h1>      
+  </div>
+</div>
+
+  <div class="row">
+    <div class="visual">
+        <h2> Idea: </h2>      
+      <div>
+       </div>
+    </div>
+    <div class="writting">
+      <p> When I first read the course description and saw that I needed an idea for a final project I knew that I needed to use my time and resourses wisely. I was going to have access to tools and mentorship that I wouldn't have back home. I want to be a aerospace engineer, so I knew that I wanted to have a project related to aerospace in someway. I couldnt think of anything rocket related that I could make, so I emailed an aerospace engineer that I met at a HOBY Va leadership conference named Bucky Khalap. Luckily he was able to pitch me plenty of great ideas and i decided that making a rocket guidence system was a great, challenging project that was also possible within the time frame. My idea was to put a small gyro inside of the rocket that would take the angle of the rocket and change the fins of the rocket in a way that would redirect the rocket back on course. </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="visual">
+        <h2> Planning: </h2>      
+      <div>
+        <img src="Screen Shot 2022-08-02 at 3.54.25 AM.png" alt=" Black Brant II ">
+       </div>
+    </div>
+    <div class="writting">
+      <p> First I had to decide on what parts I wanted to use for the rocket. I knew that I wanted it to be a relatively small rocket because its easier for beginners and if anything were to go wrong the smaller the rocket the smaller the problem. For the rocket fins I knew I needed a small motor that would be light and easy to control using a gyroscope input. For this I looked back to <a href="week7/week7.html"> Week 7: Electronic Output Devices</a> where we used servo motors and I was able to control it with a gyroscope. For the microcontroller I knew that the arduino uno that I planned on using wasnt going to fit inside of a rocket body so I originally planned on using an arudino nano. This would cause unexpected errors that I will talk about durring the assebily phase of the project. For the body of the rocket I went with the <a href = "https://www.amazon.com/Estes-Black-Brant-Flying-Rocket/dp/B07WGWKR7R/ref=sr_1_1?crid=1OOYVWO65ZE74&keywords=black+brant+II&qid=1659426469&sprefix=black+brant+ii%2Caps%2C72&sr=8-1 ">Black Brant II</a>. It had a diameter of 2 inches, big enough to hold the electronics inside, and holds a d12-7 engine that is big enough to launch with the added weight. </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="visual">
+        <h2> Simulations: </h2>      
+      <div>
+        <video width="600px" autoplay muted>
+            <source src="Screen Recording 2022-07-26 at 7.46.18 PM.mp4" type="video/mp4">
+          </video>
+       </div>
+    </div>
+    <div class="writting">
+      <p> I used a rocket simulator called <a href = "https://www.apogeerockets.com/RockSim/RockSim_Information">RocketSim</a> to get prediction of what a rocket launch would look like with that model rocekt. Without any of the electronics it would go roughly 1400 feet. Due to the fact that the electronics doubles the mass of the rocket I estimate that the rocket would go 700 feet.</p>
+    </div>
+    <div class="visual">
+        <div>
+        <img src="Screen Shot 2022-08-02 at 4.49.01 AM.png" alt=" Nose cone assebily ">
+        </div>
+        <div class="writting">
+            <p> This is another simualotion break down to what the rocket would look like in theory. The rocket would reach its peak acceleration in roughly 0.6 seconds but will slowdown it continues to ascend until it reaches max altitude at 1.55 seconds. At 8 seconds the chutte will deploy  and the rocket will fall down slowly. I expected these results to be about half of what is predicted because of all the extra mass. This would still give me a rough estimate of what a successful launch would look like.</p>
+          </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="visual">
+        <h2> Body Assembily: </h2>      
+        <div>
+            <img src="Screen Shot 2022-08-02 at 4.07.59 AM.png" alt=" Nose cone assebily ">
+       </div>
+    </div>
+        <div class="writting">
+            <p> I first started off with the nose cone of the rocket following the instructions in the paper that came in the package. I first had to cut the smaller, plastic tube in half and attatch it to the larger cone shaped tube using a 1/2 inch cardboard tubing and super glue. The parachutte of the rocket had one end attatched to the nose of the rocket and the other end to the larger tube of the rocket. This would theoretically be deployed by an internal explosion in the engine. On the body of the engine I also made a motor mount where there was a smaller tube in the main body tube used to stop the enigne from moving inside the rocket body. The body was designed to be very tight fitting, so the super glue made it hard to put all the parts together. I worked around this by sanding around all the edges of the rocket where the superglue got in the way. The rocket body was all ready except for the fins that needed to be lazer cut to fit the servos. </p>
+        </div>
+        <div class="visual">
+            <video width="600px" autoplay muted>
+                <source src="IMG_9787.mp4" type="video/mp4">
+            </video>
+            <div>
+                <img src="Screen Shot 2022-08-02 at 5.07.30 AM.png" alt=" Fin lazer cut ">
+            </div>
+        </div>
+    <div class="writting">
+        <p> I cut the first fin without a notch for the servo horns to go inside of. I decided that this want a good idea because the fins would already be very far away from the body of the rocket and that would affect the area of pressure in the rocket. I decided that it was a better idea to have the fins move around the body of the servos to add to the area of pressure  on the rocket and make it more aerodynamic. Finding the right material for the fins was tough because it needed to be strong as well as light. I also miscalculated the size of the servos by 2mm luckily this was fixed with a little bit of sanding around the edges. I connected the servo horns to the fins with some superglue because it wouldnt add much weight and it's durability.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="visual">
+        <h2> Electronics: </h2>      
+    </div>
+        <div class="writting">
+            <p>  </p>
+        </div>
+        <div class="visual">
+            <div>
+                <img src="Screen Shot 2022-08-02 at 9.55.59 AM.png" alt=" New board">
+            </div>
+        </div>
+    <div class="writting">
+        <p>  While trying to wire, I had a good idea of how I wanted it all to fit. I had already had a code before that had worked all I neeed to do was bring it down to a smaller scale. This was a much larger issue that I had first anticipated. I tried using a protoboard and soldering all the cables together that way I would have had a solid connection that wouldnt fall apart in launch. What happened was I kept soldering pins together that didnt need to be soldered together. I kept trying over and over again for hours until I had a messy, protoboard for all the 5v and ground connections (The one one the right). I then took off a part of a bread board and secured the connections with hot glue. servos were all connected to pins 13,14,4,16, as well as power and a ground pin on each. The gyro is set up to power and ground, as well as pins 21 and 22 for sda and scl. </p>
+    </div>
+  </div>
+<div>
+    <a href="Rocket" download>
+        <p> Download code</p>
+      </a>
+    <pre><code class="language-arduino">
+        #include <MPU6050_tockn.h>
+            #include <ESP32Servo.h>
+            
+            
+            int servopin1 = 13;  // Servo pin
+            int servopin2 = 14;
+            int servopin3 = 4 ;
+            int servopin4 = 16;
+            
+            Servo servo1;   // Servo object
+            Servo servo2;
+            Servo servo3;
+            Servo servo4;
+            
+            int pos = 0; //position
+            
+            MPU6050 mpu6050(Wire);
+            
+            long timer = 0;
+            
+            void setup()
+            {
+              Serial.begin(9600);
+              Wire.begin();
+              mpu6050.begin();
+              mpu6050.calcGyroOffsets(true);
+            
+              servo1.attach(servopin1);   //attach object to pin
+              servo2.attach(servopin2);
+              servo3.attach(servopin3);
+              servo4.attach(servopin4);
+            
+              if( mpu6050.getAngleX() == -1<0< 1){                  
+                  servo2.write(90);    //set to 90 degrees
+                }
+                
+              if( mpu6050.getAngleX() == 0){
+                  servo1.write(90); //set to 90 degrees
+                }
+              if(mpu6050.getAngleY() == 0){        
+                servo3.write(90);//set to 90 degrees
+                }
+                
+              if(mpu6050.getAngleY() == 0){
+                servo4.write(90); //set to 90 degrees2
+            }
+            
+            void loop()
+            {
+            
+              mpu6050.update();
+            
+              if (millis() - timer > 10000) {
+            
+            
+                Serial.print("angleX : ");            // print
+                Serial.print(mpu6050.getAngleX());
+                Serial.print("  angleY : ");
+                Serial.println(mpu6050.getAngleY());
+            
+                timer = millis();
+            
+              }
+            
+              //x-axis / roll
+            
+             
+               servo2.write(90 -mpu6050.getAngleY()); //unstable angle
+            
+            
+               
+               servo1.write(90 + mpu6050.getAngleY()); //unstable angle
+            //y-axis / pitch 
+                   
+              
+               servo3.write(90 - mpu6050.getAngleX()); //unstable angle
+                
+             
+               servo4.write(90 + mpu6050.getAngleX());//unstable angle
+              
+              }
+            </code></pre> 
+    </div>
+
+    <div class="row">
+        <div class="visual">
+            <h2> Code Explanation: </h2>      
+        </div>
+            <div class="writting">
+                <p> First it sets servos to work on certain pins on the micro controller. Doing this makes sure that only the servos that you need to get a signal, get a signal. After this it sets the position of the servos to 0. In void set up it sets all the servo pins to 90 degrees so that they are all straight up in the 90 degree position aligned with the rocket. Finally in void loop it gets the angle read by the gyro and subtracts or adds it to 90 to adjust for the unstable angle in the rocket and return it to the correct trajectory.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="visual">
+        <video width="600px" autoplay muted>
+            <source src="IMG_9849.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="row">
+        <div class="visual">
+            <h2> Finally: </h2>      
+        </div>
+        <div>
+                <div class="writting">
+                    <p> Finally, with everything working on its own it was finally time to put it all together. I painted the rocket, Inserted the servos and hot glued them in, and finally connected it all together and attatched it to and external battery. This is when something unexpected happened. The servos wouldnt work. I tried using 9v batterys, powerbanks, and even power supplies. Nothing worked. I tried for over 9 hours trying to fix the code, seeing if there was an issue with the connections, and even trying out different servos. Nothing that I did seemed to work. No one could figure out what was wrong and after a lot of debating and discussing what was the best course of action I decided  that getting a recording of the code working, and launching after without any of the code running was my best choice. I am sad that I wasnt able to test out the code  with a live launch, however the fact that both were still able to work seperately made me very happy with my progress.  </p>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="visual">
+            <h2> Images: </h2>      
+        </div>
+
+        <video width="600px" autoplay muted>
+            <source src="IMG_9851_2_MOV_AdobeExpress.mp4" type="video/mp4">
+        </video>
+
+        <div>
+            <img src="IMG_9881.jpg" alt=" Rocket">
+        </div>
+
+        <div>
+            <img src="IMG_9882.jpg" alt="Rocket">
+        </div>
+
+        <div>
+            <img src="IMG_9883.jpg" alt=" Rocket">
+        </div>
+
+        <video width="600px" autoplay muted>
+            <source src="RPReplay_Final1659435119_2_AdobeExpress.mp4" type="video/mp4">
+        </video>
+
+
+
+    </div>
+
+
+
+
+</body>
+</html>
