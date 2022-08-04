@@ -47,31 +47,95 @@
   </style>
 </head>
 <body>
-
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>                        
-            </button>
-            <a class="navbar-brand" href="#">Portfolio</a>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="https://vargasl24.github.io/PHYSCI-70/index.html">Home</a></li>
-              <li><a href="About/about.html">About</a></li>
-              <li><a href="Final_Project/Final_project.html">Final Project</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">Portfolio</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="https://vargasl24.github.io/PHYSCI-70/index.html">Home</a></li>
+          <li><a href="About/about.html">About</a></li>
+          <li><a href="Final Project/Final.html">Final Project</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
 
 <div class="jumbotron">
   <div class="container twext-center">
     <h1>Week 6: Electronic Input Devices </h1>      
   </div>
+</div>
+  
+    
+    <div class="writting">
+      <p>This weeks assignment was to use a sensor to measure some sort of physical quantitity and to calibrate it by graphing out its data. There was also a second part of to the assignment where we had to do the same thing with a sensor we had to create ourselves using copper tape.</p>
+    </div>
+ 
+   
+    <div class="row">
+      <div class="visual">
+        <div>
+          <img src="IMG_9691.jpg" alt="Thermistor ">
+         </div>
+      </div>
+      <div class="writting">
+        <p>I used <a href="https://create.arduino.cc/projecthub/Marcazzan_M/how-easy-is-it-to-use-a-thermistor-e39321"> this</a> guide to set up the wiring for my thermistor. The wiring in the image worked fine however I needed to move some of the wires arould for when I was calibrating the thermistor due to my meathod of appyling heat. I had a plenty of mistakes happen durring this week, my first major mistake was using the wrong thermistor. I used some code from <a href="https://nathanmelenbrink.github.io/intro-dig-fab/06_input/index.html">Nathan's website</a> to recieve the input from the thermistor. However The math was set up to function for a different type of thermistor. When I first tried this with the wrong type of thermistor, The tempature would not fluctuate. It took me about 30 minutes of trying to switch out wires and looking at the code to realize that the thermistor was the issue. After some slight changes to the code it spit out the results of tempature as well as the resistance as the tempurature changes. Here is the code I used:</p>
+         
+      </div>
+    </div>
+
+    <pre><code class="language-arduino">
+      int ThermistorPin = A0;
+int Vo;
+float R1 = 10000;
+float R2, T;
+float A = 3.354e-03;
+float B = 2.5698e-4;
+
+void setup() {
+  Serial.begin(9600);           
+}
+
+void loop() {
+
+  Vo = analogRead(ThermistorPin);
+  R2 = R1 * 1/(1023.0 / (float)Vo - 1.0);  //Calculate resistance of thermistor from voltage divider math.
+  T = (1.0 / (A + B*log(R2/R1) ));  // Calculate temperature using datasheet formula.
+  T = T - 273.15;                   //Convert from Kelvin to Celcius.
+
+
+  Serial.print("Temperature: "); 
+  Serial.print(T);
+  Serial.println("C"); 
+
+  Serial.print("Resistance: "); 
+  Serial.print(R2);
+  Serial.println("Ohms"); 
+
+  delay(500);
+}
+          </code></pre> 
+
+          <div class="row">
+            <div class="visual">
+              <div>
+                <img src="Screen Shot 2022-07-22 at 2.20.46 PM.png" alt="Graph of thermistor ">
+               </div>
+            </div>
+            <div class="writting">
+              <p>In order to graph out and calibrate the thermistor. i first had to collect data points. The way that I did this is by heating up the thermistor with a blow drier that went up to 400 degrees F. I chose to only go up to 100 F because I didnt want to risk harming any wires. I used the data monitor that is in arduino to get all of my data points and this was a very tedious and long process. I went through more than two dozen of these data sheets to get an accurate graph. In the end I had around 70 data points that I used to make the graph to the right. I was extremely happy wiht how thos turned out and all In all I think everything was sucessful. If I were to do this all again I would like to go up higher in temperature and see what the max is for the thermistor. I would also like to do the opposite and go all the way down to possibly the negatives and see what the lowest point is for the thermistor.</p>
+            </div>
+          </div>
+
 </body>
 </html>
