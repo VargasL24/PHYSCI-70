@@ -48,64 +48,80 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>                        
-            </button>
-            <a class="navbar-brand" href="#">Portfolio</a>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="https://vargasl24.github.io/PHYSCI-70/index.html">Home</a></li>
-              <li><a href="About/about.html">About</a></li>
-              <li><a href="Final_Project/Final_project.html">Final Project</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">Portfolio</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="https://vargasl24.github.io/PHYSCI-70/index.html">Home</a></li>
+          <li><a href="About/about.html">About</a></li>
+          <li><a href="Final Project/Final.html">Final Project</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
 
 <div class="jumbotron">
   <div class="container twext-center">
     <h1>Week 10: Machine Building and End Effectors </h1>      
   </div>
-</body>
-</html>
-   .writting h2{
-    text-align: center;
-   }
-  </style>
-</head>
-<body>
+</div>
 
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>                        
-            </button>
-            <a class="navbar-brand" href="#">Portfolio</a>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="https://vargasl24.github.io/PHYSCI-70/index.html">Home</a></li>
-              <li><a href="About/about.html">About</a></li>
-              <li><a href="Final_Project/Final_project.html">Final Project</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
-<div class="jumbotron">
-  <div class="container twext-center">
-    <h1>Week 6: Electronic Input Devices </h1>      
+  <div class="row">
+    <div class="visual">
+        <img src="IMG_F30B11CBDE7A-1.jpeg" alt="wiring ">
+    </div>
+    <div class="writting">
+      <p> For this week we had to design a machine using stepper motors. I thought it was going to be easy because of working with servo motors before, however this proved to be false due to the dificult wiring. When I was connecting the motor to the driver using the tutorial, I found it hard to understand the wiring at first however after looking at all of the resources provided in the tutorial I figured it out and got the rest down fairly quickly. While I was wiring a wire wasnt in all of the way and as a result something strange happened. The motor would spin and then stop once a force was applied to it, and then repeat infinitly. Sadly there is no video of this happening because my phone was dead while I was at the lab.</p>
+    </div>
   </div>
+ 
+  <pre><code class="language-arduino">
+  #include AccelStepper.h
+
+    const int stepPin = 13;  // blue
+    const int dirPin = 12;   // orange
+    
+    // Define a stepper and the pins it will use
+    AccelStepper stepper(1, stepPin, dirPin); // initialise accelstepper for a two wire board
+    
+    void setup() {
+      // put your setup code here, to run once:
+      pinMode(stepPin, OUTPUT);
+      pinMode(dirPin, OUTPUT);
+    
+      digitalWrite(dirPin, LOW);
+    }
+    
+    void loop() {
+      // put your main code here, to run repeatedly:
+      digitalWrite(stepPin, LOW);
+      delay(100);
+      digitalWrite(stepPin, HIGH);
+      delay(5);
+    }
+  </code>
+  </pre>
+
+  <div class="row">
+    <div class="visual">
+        <img src="IMG_9931.jpg" alt="wiring ">
+        <img src="IMG_9932.jpg" alt="wiring ">
+    </div>
+    <div class="writting">
+      <p>  The way that this works is very simple. There is a off set gear attatched to the stepper motor to spin but only allow two gears to overlap at certain times. Due to the fact I can control the speed of the stepper to make the box open more often or less often. I was unable of getting a video of this working because I couldnt attatch the door to the main frame in time.</p>
+    </div>
+  </div>
+
+
 </body>
 </html>

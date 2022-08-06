@@ -48,30 +48,161 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>                        
-            </button>
-            <a class="navbar-brand" href="#">Portfolio</a>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="https://vargasl24.github.io/PHYSCI-70/index.html">Home</a></li>
-              <li><a href="About/about.html">About</a></li>
-              <li><a href="Final_Project/Final_project.html">Final Project</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">Portfolio</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="https://vargasl24.github.io/PHYSCI-70/index.html">Home</a></li>
+          <li><a href="About/about.html">About</a></li>
+          <li><a href="Final Project/Final.html">Final Project</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
 
 <div class="jumbotron">
   <div class="container twext-center">
-    <h1>Week 6: Electronic Input Devices </h1>      
+    <h1>Week 7: Electronic Output Devices </h1>      
   </div>
+</div>
+  <div class="row">
+    <div class="visual">
+    </div>
+    <div class="writting">
+      <p> Because I needed to use a gyro to change the direction of a fin on a rocket I figured that it was a good idea to get started on my final early and get that done durring this week.  </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="visual">
+      <div>
+        <img src="IMG_9920.jpg" alt="wiring ">
+       </div>
+    </div>
+    <div class="writting">
+      <p> First I connected all the power and ground pins into a breadboard and gave power to all the servos and the gyro. After this I connected the scl and sda pins to pin 21 and 22 in the esp32 so that the gyro was able to function and send its position to the microcontroller. I connected the last pin of the servo to the microcontroller. This pin is what tells the servo where to move to and will adjust for the wrong angle.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="visual">
+      <div>
+        <img src="IMG_9921.jpg" alt="more wires ">
+       </div>
+    </div>
+    <div class="writting">
+      <p> First it sets servos to work on certain pins on the micro controller. Doing this makes sure that only the servos that you need to get a signal, get a signal. After this it sets the position of the servos to 0. In void set up it sets all the servo pins to 90 degrees so that they are all straight up in the 90 degree position aligned with the rocket. Finally in void loop it gets the angle read by the gyro and subtracts or adds it to 90 to adjust for the unstable angle in the rocket and return it to the correct trajectory.</p>
+    </div>
+  </div>
+
+  <pre><code class="language-arduino">
+    #include <MPU6050_tockn.h>
+      #include <ESP32Servo.h>
+      
+      
+      int servopin1 = 13;  // Servo pin
+      int servopin2 = 14;
+      int servopin3 = 4 ;
+      int servopin4 = 16;
+      
+      Servo servo1;   // Servo object
+      Servo servo2;
+      Servo servo3;
+      Servo servo4;
+      
+      int pos = 0; //position
+      
+      MPU6050 mpu6050(Wire);
+      
+      long timer = 0;
+      
+      void setup()
+      {
+        Serial.begin(9600);
+        Wire.begin();
+        mpu6050.begin();
+        mpu6050.calcGyroOffsets(true);
+      
+        servo1.attach(servopin1);   //attach object to pin
+        servo2.attach(servopin2);
+        servo3.attach(servopin3);
+        servo4.attach(servopin4);
+      
+        if( mpu6050.getAngleX() == -1<0< 1){                  
+            servo2.write(90);    //set to 90 degrees
+          }
+          
+        if( mpu6050.getAngleX() == 0){
+            servo1.write(90); //set to 90 degrees
+          }
+        if(mpu6050.getAngleY() == 0){        
+          servo3.write(90);//set to 90 degrees
+          }
+          
+        if(mpu6050.getAngleY() == 0){
+          servo4.write(90); //set to 90 degrees2
+      }
+      
+      void loop()
+      {
+      
+        mpu6050.update();
+      
+        if (millis() - timer > 10000) {
+      
+      
+          Serial.print("angleX : ");            // print
+          Serial.print(mpu6050.getAngleX());
+          Serial.print("  angleY : ");
+          Serial.println(mpu6050.getAngleY());
+      
+          timer = millis();
+      
+        }
+      
+        //x-axis / roll
+      
+       
+         servo2.write(90 -mpu6050.getAngleY()); //unstable angle
+      
+      
+         
+         servo1.write(90 + mpu6050.getAngleY()); //unstable angle
+      //y-axis / pitch 
+             
+        
+         servo3.write(90 - mpu6050.getAngleX()); //unstable angle
+          
+       
+         servo4.write(90 + mpu6050.getAngleX());//unstable angle
+        
+        }
+  </code></pre>
+
+
+  <div class="row">
+    <div class="visual">
+      <div>
+        <video width="600px" autoplay muted>
+            <source src="IMG_9849 2.mp4" type="video/mp4">
+          </video>
+       </div>
+    </div>
+    <div class="writting">
+      <p> Here is what the servos look like in action </p>
+    </div>
+  </div>
+
+
 </body>
 </html>

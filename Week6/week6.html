@@ -90,7 +90,6 @@
       </div>
       <div class="writting">
         <p>I used <a href="https://create.arduino.cc/projecthub/Marcazzan_M/how-easy-is-it-to-use-a-thermistor-e39321"> this</a> guide to set up the wiring for my thermistor. The wiring in the image worked fine however I needed to move some of the wires arould for when I was calibrating the thermistor due to my meathod of appyling heat. I had a plenty of mistakes happen durring this week, my first major mistake was using the wrong thermistor. I used some code from <a href="https://nathanmelenbrink.github.io/intro-dig-fab/06_input/index.html">Nathan's website</a> to recieve the input from the thermistor. However The math was set up to function for a different type of thermistor. When I first tried this with the wrong type of thermistor, The tempature would not fluctuate. It took me about 30 minutes of trying to switch out wires and looking at the code to realize that the thermistor was the issue. After some slight changes to the code it spit out the results of tempature as well as the resistance as the tempurature changes. Here is the code I used:</p>
-         
       </div>
     </div>
 
@@ -136,6 +135,71 @@ void loop() {
               <p>In order to graph out and calibrate the thermistor. i first had to collect data points. The way that I did this is by heating up the thermistor with a blow drier that went up to 400 degrees F. I chose to only go up to 100 F because I didnt want to risk harming any wires. I used the data monitor that is in arduino to get all of my data points and this was a very tedious and long process. I went through more than two dozen of these data sheets to get an accurate graph. In the end I had around 70 data points that I used to make the graph to the right. I was extremely happy wiht how thos turned out and all In all I think everything was sucessful. If I were to do this all again I would like to go up higher in temperature and see what the max is for the thermistor. I would also like to do the opposite and go all the way down to possibly the negatives and see what the lowest point is for the thermistor.</p>
             </div>
           </div>
+
+          <div class="row">
+            <div class="visual">
+              <div> 
+                <img src="Screen Shot 2022-08-05 at 9.37.47 PM.png" alt=" GRAPH">
+               </div>
+            </div>
+            <div class="writting">
+              <p> For the second part of the assignment we had to make our own capacitive sensor. I decided it would be interesting to make a cup that measures how full it is. The way it works is that as the water fills the cut it acts as a barrier between the two coper plates. As I add more water the recistance inbetween these two plates increases and it is all displayed in arduino data: monitor. On the cup there were numbers going from 0 - 230 mL. After gathering some data points it would be able to measure how much water was in a cup based off of only the amount of resistance desplayed in the graph. For the code I used the example code found <a href = 'https://nathanmelenbrink.github.io/intro-dig-fab/06_input/index.html'> here</a>.</p>
+            </div>
+          </div>
+          <div>
+            <pre><code class="language-arduino">
+              long result;   //variable for the result of the tx_rx measurement.
+              int analog_pin = A3;
+              int tx_pin = 4;
+              
+              void setup() {
+                  pinMode(tx_pin, OUTPUT);      //Pin 4 provides the voltage step
+                  Serial.begin(9600);
+              }
+              
+              void loop() {
+                  result = tx_rx();
+                  Serial.println(result);
+              }
+              
+              
+              long tx_rx(){         // Function to execute rx_tx algorithm and return a value
+                                    // that depends on coupling of two electrodes.
+                                    // Value returned is a long integer.
+                int read_high;
+                int read_low;
+                int diff;
+                long int sum;
+                int N_samples = 100;    // Number of samples to take.  Larger number slows it down, but reduces scatter.
+              
+                sum = 0;
+              
+                for (int i = 0; i < N_samples; i++){
+                 digitalWrite(tx_pin,HIGH);              // Step the voltage high on conductor 1.
+                 read_high = analogRead(analog_pin);     // Measure response of conductor 2.
+                 delayMicroseconds(100);                 // Delay to reach steady state.
+                 digitalWrite(tx_pin,LOW);               // Step the voltage to zero on conductor 1.
+                 read_low = analogRead(analog_pin);      // Measure response of conductor 2.
+                 diff = read_high - read_low;            // desired answer is the difference between high and low.
+                 sum += diff;                            // Sums up N_samples of these measurements.
+               }
+                return sum;
+              }                                          // End of tx_rx function.
+            </pre> </code>
+          </div>
+
+<div class="row">
+  <div class="visual">
+    <div>
+      <div>    
+        <img src="IMG_9916.jpg" alt=" cup">
+          <img src="IMG_9915.jpg" alt=" cup">
+       </div>
+  </div>
+  <div class="writting">
+    <p> This is what the capacitive sensor ended up looking like:</p>
+  </div>
+</div>
 
 </body>
 </html>
